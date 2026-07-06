@@ -50,7 +50,7 @@ const config = {
 
   follow: {
     maxDistance: 5,
-    durationMs: 30000,
+    durationMs: 5000,
     cooldownMs: 30000,
     messageCommand: "/msg",
     followMessage: "Merhaba {username}! Benimle konuşmak için {msgCommand} {botname} [mesaj] yazabilirsin!"
