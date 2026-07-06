@@ -50,8 +50,8 @@ const config = {
 
   follow: {
     maxDistance: 5,
-    durationMs: 5000,
-    cooldownMs: 60000,
+    durationMs: 30000,
+    cooldownMs: 30000,
     messageCommand: "/msg",
     followMessage: "Merhaba {username}! Benimle konuşmak için {msgCommand} {botname} [mesaj] yazabilirsin!"
   },
@@ -431,7 +431,6 @@ function startBot() {
     setTimeout(() => {
       clearInterval(updateInterval);
       try { bot.pathfinder.setGoal(null); } catch (e) { /* ignore */ }
-      isFollowing = false;
       followCooldowns[entity.username] = Date.now();
       console.log(`[Takip] ${entity.username} bitti.`);
 
@@ -444,7 +443,8 @@ function startBot() {
           .replace('{botname}', config.botAccount.displayName);
         bot.chat(`${config.follow.messageCommand} ${entity.username} ${dm}`);
         equipEmptyHand();
-      }, 1500);
+        isFollowing = false;
+      }, 500);
     }, config.follow.durationMs);
   });
 
